@@ -1,0 +1,45 @@
+# Compilação
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+todo.db
+
+# Configurações locais / secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+appsettings.json
+
+# Banco SQLite local, caso ainda exista
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
