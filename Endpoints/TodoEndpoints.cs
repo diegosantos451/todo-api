@@ -25,14 +25,14 @@ namespace api_todo.Endpoints
             static async Task<IResult> GetAllTodos(TodoDb db, ClaimsPrincipal user)
             {
                 var userId = user.GetUserId();
-                var todos = await db.Todos.Where(t => t.UserId == userId).Select(t => new TodoItemDTO(t)).ToListAsync();
+                var todos = await db.Todos.Where(t => t.UserId == userId).OrderByDescending(t => t.Id).Select(t => new TodoItemDTO(t)).ToListAsync();
                 return TypedResults.Ok(todos);
             }
 
             static async Task<IResult> GetCompleteTodos(TodoDb db, ClaimsPrincipal user)
             {
                 var userId = user.GetUserId();
-                return TypedResults.Ok(await db.Todos.Where(t => t.IsComplete && userId == t.UserId).Select(x => new TodoItemDTO(x)).ToListAsync());
+                return TypedResults.Ok(await db.Todos.Where(t => t.IsComplete && userId == t.UserId).OrderByDescending(t => t.Id).Select(x => new TodoItemDTO(x)).ToListAsync());
             }
 
             static async Task<IResult> GetTodo(int id, TodoDb db, ClaimsPrincipal user)
